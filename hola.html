@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .table {
+            background-color: white;
+            text-align: left;
+            width: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <br><br>
+        <a class="btn btn-info" href="index.html">Regresar</a>
+        <br><br>
+        <div class="row">
+
+            <table id="tablaDatos" class="table">
+                <thead>
+                    <tr>
+                        <th width="50%">Datos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+    <script>
+        let $URL_REST = "http://www.proyectos.arcelia.net/evr/src/public";
+        var matriculaSeleccionada = location.search;
+        matriculaSeleccionada = matriculaSeleccionada.slice(11, (matriculaSeleccionada.length));
+        var tabla = document.getElementById("tablaDatos");
+        var numeroRenglones = 1;
+        var endPoint = $URL_REST + "/alumnos/" + matriculaSeleccionada;
+        fetch(endPoint)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(alumno => {
+                    var renglon = tabla.insertRow(1);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("Matricula: " + alumno.clave_alu);
+                    celda.appendChild(textoCelda);
+                    var renglon = tabla.insertRow(2);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("clave de administrador: " + alumno.clave_admin);
+                    celda.appendChild(textoCelda);
+                    var renglon = tabla.insertRow(3);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("Nombre del alumno: " + alumno.nombre + " " + alumno.ap_paterno + " " + alumno.ap_materno);
+                    celda.appendChild(textoCelda);
+                    var renglon = tabla.insertRow(4);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("Curp: " + alumno.curp);
+                    celda.appendChild(textoCelda);
+                    var renglon = tabla.insertRow(5);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("Telefono: " + alumno.telefono);
+                    celda.appendChild(textoCelda);
+                    var renglon = tabla.insertRow(6);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("Celular: " + alumno.celular);
+                    celda.appendChild(textoCelda);
+                    var renglon = tabla.insertRow(7);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("Correo: " + alumno.email);
+                    celda.appendChild(textoCelda);
+                    var renglon = tabla.insertRow(8);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("Sexo: " + alumno.sexo);
+                    celda.appendChild(textoCelda);
+                    var renglon = tabla.insertRow(9);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("Dirección: " + alumno.direccion);
+                    celda.appendChild(textoCelda);
+                    var renglon = tabla.insertRow(10);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("Colonia: " + alumno.colonia);
+                    celda.appendChild(textoCelda);
+                    var renglon = tabla.insertRow(11);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("Codigo postal: " + alumno.cp);
+                    celda.appendChild(textoCelda);
+                    var renglon = tabla.insertRow(12);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("ciudad: " + alumno.ciudad);
+                    celda.appendChild(textoCelda);
+                    var renglon = tabla.insertRow(13);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("Numero de estado: " + alumno.id_estado);
+                    celda.appendChild(textoCelda);
+                    var renglon = tabla.insertRow(14);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("Delegacion: " + alumno.delegacion);
+                    celda.appendChild(textoCelda);
+                    var renglon = tabla.insertRow(15);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("Estatura: " + alumno.estatura);
+                    celda.appendChild(textoCelda);
+                    var renglon = tabla.insertRow(16);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("Peso: " + alumno.peso);
+                    celda.appendChild(textoCelda);
+                    var renglon = tabla.insertRow(17);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("Estatus: " + alumno.status_alu);
+                    celda.appendChild(textoCelda);
+                    var renglon = tabla.insertRow(18);
+                    var celda = renglon.insertCell(0);
+                    var textoCelda = document.createTextNode("Fecha de edicion: " + alumno.fedita);
+                    celda.appendChild(textoCelda);
+                });
+
+            }).catch(error => console.log())
+    </script>
+</body>
+
+</html>
